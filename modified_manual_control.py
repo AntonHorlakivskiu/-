@@ -1006,7 +1006,7 @@ class CameraManager(object):
             # we collect Z-value of lidar-points only for those one that are in rectangle zone ahead the vehicle
 
             point_counter, sq_sum = 0, 0
-            for x,y,z,_ in points:
+            for x,y,z,_ in points:   # note that +x is to the left of the car, +y is to the back of the car, +z is to the ground (downwards).
                 if ((-1500<x<+1500) and (-3000>y>-4500)):
                     # we prepare data to evaluate RMS for  lidar-points' heights
                     sq_sum = (abs(z)-LIDAR_MOUNT_HEIGHT)**2
@@ -1019,7 +1019,7 @@ class CameraManager(object):
 
             # alarm for car driver
             if (mean_deviation >= TRESHOLD_HEIGHT_DIF ):
-                print("/\/\/\/\/\!!rugged road!!/\/\/\/\/\")
+                print("/\/\/\/\/\!!rugged road!!/\/\/\/\/\n")
 
 #********************************
 
